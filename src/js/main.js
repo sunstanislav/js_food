@@ -38,8 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     //Timer
-
-    const dedline = '2022-02-11';
+    const dedline = '2022-03-11';
 
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -90,5 +89,23 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     setClock('.timer', dedline);
-});
 
+    //Modal
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]');
+
+        modalTrigger.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.classList.add('show');
+                modal.classList.remove('hide');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modalCloseBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+            modal.classList.add('hide');
+            document.body.style.overflow = '';
+        });
+});
