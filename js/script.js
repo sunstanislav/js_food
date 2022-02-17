@@ -177,7 +177,23 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  setClock('.timer', dedline);
+  setClock('.timer', dedline); //Modal
+
+  const modalTrigger = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]');
+  modalTrigger.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.classList.remove('hide');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  modalCloseBtn.addEventListener('click', () => {
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+    document.body.style.overflow = '';
+  });
 });
 
 /***/ })
